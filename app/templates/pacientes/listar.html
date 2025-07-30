@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block conteudo %}
+<h2>Pacientes</h2>
+<a href="/pacientes/novo" class="btn btn-success mb-3">Cadastrar Paciente</a>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nome</th>
+      <th>Telefone</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for paciente in pacientes %}
+    <tr>
+      <td>{{ paciente.id }}</td>
+      <td>{{ paciente.nome }}</td>
+      <td>{{ paciente.telefone }}</td>
+      <td>
+        <a href="/pacientes/{{ paciente.id }}" class="btn btn-primary btn-sm">Ver</a>
+        <a href="/pacientes/{{ paciente.id }}/editar" class="btn btn-warning btn-sm">Editar</a>
+        <a href="/pacientes/{{ paciente.id }}/deletar" class="btn btn-danger btn-sm" onclick="return confirm('Tem certeza que deseja excluir?')">Excluir</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

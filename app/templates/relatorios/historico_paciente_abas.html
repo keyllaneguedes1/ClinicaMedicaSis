@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% block title %}Histórico do Paciente{% endblock %}
+
+{% block content %}
+<div class="container my-4">
+  <div class="card shadow p-5">
+    <h2 class="text-center text-primary mb-4">📋 Histórico Completo do Paciente</h2>
+
+    {% if dados and dados|length > 0 %}
+      <h4 class="mb-4 text-secondary">👤 Paciente: <strong>{{ dados[0].paciente }}</strong></h4>
+
+      {% set consultas_map = {} %}
+      {% for item in dados %}
+        {% set cid = item.id %}
+        {% if cid not in consultas_map %}
+          {% set _ = consultas_map.update({cid: {
+            'medico': item.medico,
+            'data_consulta': item.data_consulta,
+            'observacoes': item.observacoes,
+            'exames': [],
+            'receitas': []
+          }}) %}
+        {% endif %}
+        {% if item.tipo_exame %}
+          {% set _ = consultas_map[cid]['exames'].append({'tipo_exame': item.tipo_exame, 'resultado': item.resultado}) %}
+        {% endif %}
+        {% if item.medicamento %}
+          {% set _ = consultas_map[cid]['receitas'].append({'medicamento': item.medicamento, 'posologia': item.posologia}) %}
+        {% endif %}
+      {% endfor %}
+
+      {% for cid, consulta in consultas_map.items() %}
+        <div class="mb-5 border-start border-4 border-primary ps-4 pt-3 pb-3 bg-light rounded shadow-sm">
+          <h5 class="text-primary mb-2">🗓️ Consulta em {{ consulta.data_consulta }} com Dr(a). <strong>{{ consulta.medico }}</strong></h5>
+
+          <p class="mb-3"><strong>📝 Observações:</strong> {{ consulta.observacoes or 'Nenhuma observação registrada.' }}</p>
+
+          {% if consulta.exames %}
+          <div class="mb-3">
+            <h6 class="text-info">🔬 Exames Realizados:</h6>
+            <ul class="list-group list-group-flush">
+              {% for exame in consulta.exames %}
+              <li class="list-group-item bg-light">
+                <strong>{{ exame.tipo_exame }}:</strong> {{ exame.resultado or 'Sem resultado' }}
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+          {% endif %}
+
+          {% if consulta.receitas %}
+          <div class="mb-3">
+            <h6 class="text-success">💊 Medicamentos Prescritos:</h6>
+            <ul class="list-group list-group-flush">
+              {% for receita in consulta.receitas %}
+              <li class="list-group-item bg-light">
+                <strong>{{ receita.medicamento }}</strong> - {{ receita.posologia or 'Sem posologia' }}
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+          {% endif %}
+        </div>
+      {% endfor %}
+
+    {% else %}
+      <div class="alert alert-warning text-center">
+        ⚠️ Nenhum histórico encontrado para este paciente.
+      </div>
+    {% endif %}
+
+    <div class="text-center mt-4">
+      <a href="{{ url_for('relatorio.historico_paciente_form') }}" class="btn btn-secondary">
+        🔙 Voltar
+      </a>
+    </div>
+  </div>
+</div>
+{% endblock %}

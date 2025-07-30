@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}Editar Receita{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Editar Receita</h2>
+    <form method="POST" action="{{ url_for('receita.atualizar_receita_html', id=receita.id) }}">
+        <div class="mb-3">
+            <label>ID da Consulta</label>
+            <input type="number" name="id_consulta" value="{{ receita.id_consulta }}" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label>Medicamento</label>
+            <input type="text" name="medicamento" value="{{ receita.medicamento }}" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label>Posologia</label>
+            <textarea name="posologia" class="form-control" required>{{ receita.posologia }}</textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Salvar Alterações</button>
+        <a href="{{ url_for('receita.listar_receitas_html') }}" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+{% block title %}Relatórios - Clínica Médica{% endblock %}
+
+{% block content %}
+<div class="container main-container">
+  <div class="dashboard-card">
+    <div class="card-header">
+      <i class="fas fa-chart-bar me-2"></i> Relatórios da Clínica
+    </div>
+    <div class="card-body">
+      <p class="text-center text-muted mb-4">Selecione abaixo o tipo de relatório desejado:</p>
+
+      <div class="row">
+        <!-- Consultas por Médico -->
+        <div class="col-md-6 mb-4">
+          <a href="{{ url_for('relatorio.consultas_por_medico') }}" class="text-decoration-none">
+            <div class="feature-card">
+              <div class="feature-icon" style="background: linear-gradient(135deg, #748ffc, #4c6ef5);">
+                <i class="fas fa-user-md"></i>
+              </div>
+              <h5 class="feature-title">Consultas por Médico</h5>
+              <p class="feature-description">Visualize consultas realizadas por cada profissional</p>
+              <span class="feature-link">
+                Acessar <i class="fas fa-arrow-right"></i>
+              </span>
+            </div>
+          </a>
+        </div>
+
+        <!-- Histórico Completo -->
+        <div class="col-md-6 mb-4">
+          <a href="{{ url_for('relatorio.historico_pacientes') }}" class="text-decoration-none">
+            <div class="feature-card">
+              <div class="feature-icon" style="background: linear-gradient(135deg, #00c9a7, #009e7f);">
+                <i class="fas fa-file-medical"></i>
+              </div>
+              <h5 class="feature-title">Histórico Completo</h5>
+              <p class="feature-description">Relatório com histórico de todos os pacientes</p>
+              <span class="feature-link">
+                Acessar <i class="fas fa-arrow-right"></i>
+              </span>
+            </div>
+          </a>
+        </div>
+
+        <!-- Histórico Individual -->
+        <div class="col-md-6 mb-4">
+          <a href="{{ url_for('relatorio.historico_paciente_form') }}" class="text-decoration-none">
+            <div class="feature-card">
+              <div class="feature-icon" style="background: linear-gradient(135deg, #fcc419, #f59f00);">
+                <i class="fas fa-user-injured"></i>
+              </div>
+              <h5 class="feature-title">Histórico Individual</h5>
+              <p class="feature-description">Consulte histórico de um paciente específico</p>
+              <span class="feature-link">
+                Acessar <i class="fas fa-arrow-right"></i>
+              </span>
+            </div>
+          </a>
+        </div>
+
+        <!-- Relatório Financeiro -->
+        <div class="col-md-6 mb-4">
+          <a href="{{ url_for('relatorio.relatorio_pagamentos') }}" class="text-decoration-none">
+            <div class="feature-card">
+              <div class="feature-icon" style="background: linear-gradient(135deg, #a9e34b, #82c91e);">
+                <i class="fas fa-money-bill-wave"></i>
+              </div>
+              <h5 class="feature-title">Relatório Financeiro</h5>
+              <p class="feature-description">Analise pagamentos e recebimentos</p>
+              <span class="feature-link">
+                Acessar <i class="fas fa-arrow-right"></i>
+              </span>
+            </div>
+          </a>
+        </div>
+
+        <!-- Consultas por Período -->
+        <div class="col-md-6 mb-4">
+          <a href="{{ url_for('relatorio.filtro_consultas_periodo') }}" class="text-decoration-none">
+            <div class="feature-card">
+              <div class="feature-icon" style="background: linear-gradient(135deg, #f06595, #e64980);">
+                <i class="fas fa-calendar-check"></i>
+              </div>
+              <h5 class="feature-title">Consultas por Período</h5>
+              <p class="feature-description">Filtre consultas por intervalo de datas</p>
+              <span class="feature-link">
+                Acessar <i class="fas fa-arrow-right"></i>
+              </span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

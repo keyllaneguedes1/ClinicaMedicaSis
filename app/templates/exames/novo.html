@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}Novo Exame{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Novo Exame</h2>
+
+    <form action="{{ url_for('exame.criar_exame') }}" method="post">
+        <div class="mb-3">
+            <label for="id_consulta" class="form-label">Consulta</label>
+            <select class="form-select" name="id_consulta" required>
+                <option value="" disabled selected>Selecione a consulta</option>
+                {% for c in consultas %}
+                    <option value="{{ c.id }}">Consulta {{ c.id }} - {{ c.data_consulta.strftime('%d/%m/%Y %H:%M') }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="tipo_exame" class="form-label">Tipo de Exame</label>
+            <input type="text" class="form-control" name="tipo_exame" required>
+        </div>
+        <div class="mb-3">
+            <label for="resultado" class="form-label">Resultado</label>
+            <textarea class="form-control" name="resultado" rows="4"></textarea>
+        </div>
+        <button type="submit" class="btn btn-success">Salvar</button>
+        <a href="{{ url_for('exame.listar_exames') }}" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+{% endblock %}

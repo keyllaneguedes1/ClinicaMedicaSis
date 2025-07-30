@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Filtrar Consultas por Período</h2>
+    <form method="POST" action="{{ url_for('relatorio.consultas_por_periodo') }}">
+        <div class="row">
+            <div class="col">
+                <label for="data_inicio">Data Início:</label>
+                <input type="date" id="data_inicio" name="data_inicio" class="form-control" required>
+            </div>
+            <div class="col">
+                <label for="data_fim">Data Fim:</label>
+                <input type="date" id="data_fim" name="data_fim" class="form-control" required>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary mt-3">Gerar Relatório</button>
+    </form>
+</div>
+{% endblock %}

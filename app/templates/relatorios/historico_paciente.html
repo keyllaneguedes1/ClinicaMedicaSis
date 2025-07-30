@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <title>Histórico de todos Pacientes</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body class="bg-light p-4">
+
+  <div class="container">
+    <h2 class="mb-4">Histórico de todos Pacientes</h2>
+
+    {% if dados %}
+      {% for item in dados %}
+      <div class="card mb-3 shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title">{{ item.paciente }} - Consulta em {{ item.data_consulta }}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">Médico: {{ item.medico }}</h6>
+          <p><strong>Observações:</strong> {{ item.observacoes or 'Nenhuma observação' }}</p>
+
+          <hr />
+
+          <p><strong>Exame:</strong> {{ item.tipo_exame or 'Nenhum exame' }}</p>
+          <p><strong>Resultado:</strong> {{ item.resultado or '-' }}</p>
+
+          <hr />
+
+          <p><strong>Medicamento:</strong> {{ item.medicamento or 'Nenhum medicamento' }}</p>
+          <p><strong>Posologia:</strong> {{ item.posologia or '-' }}</p>
+        </div>
+      </div>
+      {% endfor %}
+    {% else %}
+      <div class="alert alert-info">Nenhum histórico encontrado para esse paciente.</div>
+    {% endif %}
+    
+    <a href="{{ url_for('relatorio.historico_paciente_form') }}" class="btn btn-secondary mt-3">Voltar</a>
+  </div>
+
+</body>
+</html>

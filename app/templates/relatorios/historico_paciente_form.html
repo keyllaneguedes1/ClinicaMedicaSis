@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}Selecionar Paciente{% endblock %}
+
+{% block content %}
+<div class="card shadow p-4">
+  <h3 class="text-primary text-center mb-4">📋 Histórico do Paciente</h3>
+
+  <form method="POST">
+    <div class="mb-3">
+      <label for="id_paciente" class="form-label">Selecione o Paciente:</label>
+      <select class="form-select" name="id_paciente" id="id_paciente" required>
+        <option value="" disabled selected>-- Escolha um paciente --</option>
+        {% for paciente in pacientes %}
+          <option value="{{ paciente.id }}">{{ paciente.nome }}</option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <div class="text-center">
+      <button type="submit" class="btn btn-primary">🔍 Ver Histórico</button>
+    </div>
+  </form>
+</div>
+{% endblock %}

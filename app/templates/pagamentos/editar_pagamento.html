@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Editar Pagamento</h2>
+    <form method="POST" action="{{ url_for('pagamento_bp.editar_pagamento', id=pagamento.id) }}">
+        <div class="mb-3">
+            <label>ID da Consulta</label>
+            <input type="text" value="{{ pagamento.id_consulta }}" class="form-control" readonly>
+        </div>
+        <div class="mb-3">
+            <label>Valor</label>
+            <input type="number" name="valor" step="0.01" class="form-control" value="{{ pagamento.valor }}" required>
+        </div>
+        <div class="mb-3">
+            <label>Forma de Pagamento</label>
+            <select name="forma_pagamento" class="form-control">
+                <option {% if pagamento.forma_pagamento == 'Dinheiro' %}selected{% endif %}>Dinheiro</option>
+                <option {% if pagamento.forma_pagamento == 'Cartão' %}selected{% endif %}>Cartão</option>
+                <option {% if pagamento.forma_pagamento == 'Pix' %}selected{% endif %}>Pix</option>
+                <option {% if pagamento.forma_pagamento == 'Outro' %}selected{% endif %}>Outro</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label>Status</label>
+            <select name="status_pagamento" class="form-control">
+                <option {% if pagamento.status_pagamento == 'Pendente' %}selected{% endif %}>Pendente</option>
+                <option {% if pagamento.status_pagamento == 'Pago' %}selected{% endif %}>Pago</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Atualizar</button>
+        <a href="{{ url_for('pagamento_bp.listar_pagamentos') }}" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+{% endblock %}

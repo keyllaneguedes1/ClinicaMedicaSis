@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block title %}Relatórios - Clínica Médica{% endblock %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Médicos - Clínica Médica</title>
+    
+</head>
+<body class="bg-light">
+    <div class="container mt-5">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2> Médicos Cadastrados</h2>
+            <a href="{{ url_for('medico.cadastrar_medico') }}" class="btn btn-primary">+ Novo Médico</a>
+        </div>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            {% for category, message in messages %}
+              <div class="alert alert-{{ category }}">{{ message }}</div>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+
+        {% if medicos %}
+            <table class="table table-bordered table-striped">
+                <thead class="table-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>CRM</th>
+                        <th>Especialidade</th>
+                        <th>Telefone</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for medico in medicos %}
+                    <tr>
+                        <td>{{ medico.id }}</td>
+                        <td>{{ medico.nome }}</td>
+                        <td>{{ medico.crm }}</td>
+                        <td>{{ medico.especialidade }}</td>
+                        <td>{{ medico.telefone }}</td>
+                        <td>
+                            <a href="{{ url_for('medico.editar_medico', id=medico.id) }}" class="btn btn-sm btn-warning">Editar</a>
+                            <form method="POST" action="{{ url_for('medico.deletar_medico', id=medico.id) }}" style="display:inline;" onsubmit="return confirm('Tem certeza que deseja excluir este médico?');">
+                                <button type="submit" class="btn btn-sm btn-danger">Excluir</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <div class="alert alert-info">Nenhum médico cadastrado ainda.</div>
+        {% endif %}
+
+        <a href="{{ url_for('index.home') }}" class="btn btn-secondary mt-4">← Voltar ao Início</a>
+    </div>
+</body>
+</html>
+
+{% endblock %}

@@ -1,0 +1,49 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Novo Pagamento</h2>
+
+    <!-- Exibe mensagens flash -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
+    <form method="POST" action="{{ url_for('pagamento_bp.novo_pagamento') }}">
+        <div class="mb-3">
+            <label>ID da Consulta</label>
+            <input type="number" name="id_consulta" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label>Valor</label>
+            <input type="number" name="valor" step="0.01" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label>Forma de Pagamento</label>
+            <select name="forma_pagamento" class="form-control" required>
+                <option>Dinheiro</option>
+                <option>Cartão</option>
+                <option>Pix</option>
+                <option>Outro</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label>Status</label>
+            <select name="status_pagamento" class="form-control">
+                <option>Pendente</option>
+                <option>Pago</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-success">Salvar</button>
+        <a href="{{ url_for('pagamento_bp.listar_pagamentos') }}" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+{% endblock %}

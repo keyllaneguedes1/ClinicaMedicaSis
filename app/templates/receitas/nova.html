@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}Nova Receita{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Nova Receita</h2>
+    <form method="POST" action="{{ url_for('receita.criar_receita_html') }}">
+        <div class="mb-3">
+            <label>ID da Consulta</label>
+            <input type="number" name="id_consulta" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label>Medicamento</label>
+            <input type="text" name="medicamento" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label>Posologia</label>
+            <textarea name="posologia" class="form-control" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-success">Cadastrar</button>
+        <a href="{{ url_for('receita.listar_receitas_html') }}" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+{% endblock %}
+

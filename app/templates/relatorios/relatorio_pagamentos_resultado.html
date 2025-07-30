@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Relatório de Pagamentos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body class="bg-light">
+    <div class="container mt-5">
+        <h2>Relatório de Pagamentos</h2>
+        <p><strong>Período:</strong> {{ data_inicio }} até {{ data_fim }}</p>
+
+        {% if relatorio %}
+            <table class="table table-bordered table-striped mt-3">
+                <thead>
+                    <tr>
+                        <th>Total de Consultas</th>
+                        <th>Faturamento Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for linha in relatorio %}
+                    <tr>
+                        <td>{{ linha.total_consultas }}</td>
+                        <td>R$ {{ "{:,.2f}".format(linha.faturamento_total) }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p class="text-danger">Nenhum dado encontrado para o período informado.</p>
+        {% endif %}
+
+        <a href="{{ url_for('relatorio.relatorio_pagamentos') }}" class="btn btn-secondary mt-3">Voltar</a>
+    </div>
+</body>
+</html>

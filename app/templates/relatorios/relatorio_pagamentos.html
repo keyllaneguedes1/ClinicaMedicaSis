@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block title %}Relatórios - Clínica Médica{% endblock %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <title>Relatório de Pagamentos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body class="bg-light">
+
+<div class="container mt-5">
+
+    <h2>Relatório de Pagamentos por Período</h2>
+    <form method="POST">
+        <div class="mb-3">
+            <label for="data_inicio" class="form-label">Data Início</label>
+            <input type="date" id="data_inicio" name="data_inicio" class="form-control" required
+                   value="{{ data_inicio if data_inicio else '' }}">
+        </div>
+        <div class="mb-3">
+            <label for="data_fim" class="form-label">Data Fim</label>
+            <input type="date" id="data_fim" name="data_fim" class="form-control" required
+                   value="{{ data_fim if data_fim else '' }}">
+        </div>
+        <button type="submit" class="btn btn-primary">Gerar Relatório</button>
+    </form>
+
+    {% if relatorio %}
+    <div class="mt-4">
+        <h4>Resultados</h4>
+        <p><strong>Total de Consultas:</strong> {{ relatorio.total_consultas }}</p>
+        <p><strong>Faturamento Total:</strong> R$ {{ "{:,.2f}".format(relatorio.faturamento_total) }}</p>
+    </div>
+    {% endif %}
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+{% endblock %}
+
+

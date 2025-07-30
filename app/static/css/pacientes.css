@@ -1,0 +1,155 @@
+/* Variáveis de cor */
+:root {
+  --primary-color: #2a5bd7;
+  --secondary-color: #6c757d;
+  --accent-color: #00c9a7;
+  --light-bg: #f5f7fb;
+  --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  --border-radius: 12px;
+}
+
+/* Estilos gerais */
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--light-bg);
+  color: #333;
+}
+
+/* Navbar */
+.navbar-custom {
+  background: linear-gradient(135deg, var(--primary-color), #1a3a8f);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  padding: 15px 0;
+}
+
+.navbar-brand {
+  font-weight: 700;
+  font-size: 1.6rem;
+  color: rgb(17, 20, 196) !important;
+}
+
+/* Container principal */
+.main-container {
+  margin-top: 30px;
+  margin-bottom: 50px;
+}
+
+/* Card principal */
+.dashboard-card {
+  border: none;
+  border-radius: var(--border-radius);
+  background-color: white;
+  padding: 30px;
+}
+
+/* Cabeçalho */
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.page-title {
+  color: var(--primary-color);
+  font-weight: 600;
+  margin: 0;
+}
+
+h2 {
+  font-weight: bold;
+  color: #055fb8;
+}
+/* Botões */
+.btn-primary {
+  background: linear-gradient(135deg, var(--primary-color), #1a3a8f);
+  border: none;
+  border-radius: 8px;
+  padding: 8px 20px;
+  font-weight: 500;
+  transition: all 0.3s;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(42, 91, 215, 0.3);
+}
+
+.btn-secondary {
+  background: #6c757d;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 20px;
+}
+
+/* Tabela */
+.table-container {
+  background: white;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+}
+
+.table {
+  margin-bottom: 0;
+}
+
+.table thead {
+  background: linear-gradient(135deg, var(--primary-color), #1a3a8f);
+  color: white;
+}
+
+.table th {
+  font-weight: 500;
+  padding: 15px;
+}
+
+.table td {
+  padding: 12px 15px;
+  vertical-align: middle;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: rgba(240, 244, 248, 0.5);
+}
+
+/* Botões de ação */
+.btn-sm {
+  padding: 5px 12px;
+  font-size: 0.85rem;
+  border-radius: 6px;
+  font-weight: 500;
+}
+
+.btn-warning {
+  background-color: #fcc419;
+  border: none;
+}
+
+.btn-danger {
+  background-color: #ff6b6b;
+  border: none;
+}
+
+/* Alertas */
+.alert {
+  border-radius: 8px;
+  border: none;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .table-responsive {
+    border-radius: var(--border-radius);
+    overflow: hidden;
+  }
+  
+  .page-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+  
+  .btn {
+    width: 100%;
+  }
+}

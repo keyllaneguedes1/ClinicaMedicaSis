@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% block title %}Pacientes - Clínica Médica{% endblock %}
+
+{% block content %}
+
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Pacientes - Clínica Médica</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+<body class="bg-light">
+    <div class="container mt-5">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2> Pacientes Cadastrados</h2>
+            <a href="{{ url_for('paciente.cadastrar_paciente') }}" class="btn btn-primary">+ Novo Paciente</a>
+        </div>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Fechar"></button>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        {% if pacientes %}
+            <table class="table table-bordered table-striped">
+                <thead class="table-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Data de Nascimento</th>
+                        <th>Sexo</th>
+                        <th>Telefone</th>
+                        <th>Endereço</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for paciente in pacientes %}
+                    <tr>
+                        <td>{{ paciente.id }}</td>
+                        <td>{{ paciente.nome }}</td>
+                        <td>{{ paciente.data_nascimento.strftime('%d/%m/%Y') }}</td>
+                        <td>{{ paciente.sexo }}</td>
+                        <td>{{ paciente.telefone }}</td>
+                        <td>{{ paciente.endereco }}</td>
+                        <td>
+                            <a href="{{ url_for('paciente.editar_paciente', id=paciente.id) }}" class="btn btn-sm btn-warning">Editar</a>
+                            <a href="{{ url_for('paciente.deletar_paciente', id=paciente.id) }}" class="btn btn-sm btn-danger"
+                               onclick="return confirm('Tem certeza que deseja excluir este paciente?');">
+                               Excluir
+                            </a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <div class="alert alert-info">Nenhum paciente cadastrado ainda.</div>
+        {% endif %}
+
+        <a href="{{ url_for('index.home') }}" class="btn btn-secondary mt-4">← Voltar ao Início</a>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
+{% endblock %}

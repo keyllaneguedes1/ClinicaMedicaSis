@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}Relatório - Consultas por Médico{% endblock %}
+
+{% block content %}
+<div class="card shadow p-4">
+  <h3 class="text-primary text-center mb-4">📋 Consultas por Médico</h3>
+
+  <form method="POST">
+    <div class="mb-3">
+      <label for="id_medico" class="form-label">Selecione o Médico:</label>
+      <select class="form-select" name="id_medico" required>
+        <option value="" selected disabled>-- Escolha --</option>
+        {% for m in medicos %}
+          <option value="{{ m.id }}">{{ m.nome }} - CRM {{ m.crm }}</option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label for="inicio" class="form-label">Data Início:</label>
+        <input type="date" class="form-control" name="inicio" required>
+      </div>
+      <div class="col-md-6 mb-3">
+        <label for="fim" class="form-label">Data Fim:</label>
+        <input type="date" class="form-control" name="fim" required>
+      </div>
+    </div>
+
+    <div class="text-end">
+      <button type="submit" class="btn btn-primary">🔍 Gerar Relatório</button>
+    </div>
+  </form>
+</div>
+{% endblock %}

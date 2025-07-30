@@ -1,0 +1,329 @@
+/* ===================== */
+/* 1. Variáveis e Base   */
+/* ===================== */
+:root {
+  --primary-color: #2a5bd7;
+  --secondary-color: #6c757d;
+  --accent-color: #00c9a7;
+  --light-bg: #f8f9fa;
+  --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--light-bg);
+  color: #333;
+}
+
+/* ===================== */
+/* 2. Navbar             */
+/* ===================== */
+.navbar {
+  background: linear-gradient(135deg, var(--primary-color), #1a3a8f);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  padding: 15px 0;
+}
+
+.navbar-brand {
+  font-weight: 700;
+  font-size: 1.6rem;
+  display: flex;
+  align-items: center;
+  color: white !important;
+}
+
+.navbar-brand i {
+  margin-right: 10px;
+  font-size: 1.4em;
+}
+
+/* ===================== */
+/* 3. Layout Geral       */
+/* ===================== */
+.container {
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 15px;
+}
+
+h2 {
+  font-weight: bold;
+  color: #fdfeff;
+}
+
+/* ===================== */
+/* 4. Botões             */
+/* ===================== */
+.btn-primary {
+  background-color: var(--primary-color);
+  border: none;
+}
+
+.btn-warning {
+  background-color: #ffc107;
+  border: none;
+  color: #212529;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  border: none;
+}
+
+.btn-secondary {
+  background-color: var(--secondary-color);
+  border: none;
+}
+
+.btn-sm {
+  margin-right: 5px;
+}
+
+/* ===================== */
+/* 5. Tabelas e Alertas  */
+/* ===================== */
+.table th, .table td {
+  vertical-align: middle;
+  text-align: center;
+}
+
+.alert {
+  margin-top: 20px;
+}
+
+/* ===================== */
+/* 6. Cartões Dashboard  */
+/* ===================== */
+.dashboard-card {
+  border: none;
+  border-radius: 15px;
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+  background-color: white;
+}
+
+.dashboard-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+}
+
+.card-header {
+  background: linear-gradient(135deg, var(--primary-color), #1a3a8f);
+  color: white;
+  font-weight: 600;
+  border-bottom: none;
+  padding: 20px;
+}
+
+.card-body {
+  padding: 25px;
+}
+
+/* ===================== */
+/* 7. Feature Cards      */
+/* ===================== */
+.feature-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 25px;
+  border-radius: 12px;
+  background-color: white;
+  box-shadow: var(--card-shadow);
+  transition: all 0.3s ease;
+  height: 100%;
+  border-left: 4px solid var(--primary-color);
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+}
+
+.feature-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: white;
+}
+
+.feature-title {
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: var(--primary-color);
+}
+
+.feature-description {
+  color: var(--secondary-color);
+  font-size: 0.9rem;
+}
+
+.feature-link {
+  margin-top: auto;
+  color: var(--accent-color);
+  font-weight: 500;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+.feature-link i {
+  margin-left: 5px;
+  transition: transform 0.3s;
+}
+
+.feature-link:hover {
+  color: var(--primary-color);
+}
+
+.feature-link:hover i {
+  transform: translateX(3px);
+}
+
+/* ===================== */
+/* 8. Seção Boas-vindas  */
+/* ===================== */
+.welcome-section {
+  background: linear-gradient(135deg, var(--primary-color), #1a3a8f);
+  color: white;
+  border-radius: 15px;
+  padding: 30px;
+  margin-bottom: 30px;
+  box-shadow: var(--card-shadow);
+}
+
+.welcome-title {
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.welcome-text {
+  opacity: 0.9;
+  margin-bottom: 20px;
+}
+
+/* ===================== */
+/* 9. Cartões de Status  */
+/* ===================== */
+.stats-card {
+  border-radius: 12px;
+  padding: 20px;
+  color: white;
+  margin-bottom: 20px;
+  box-shadow: var(--card-shadow);
+}
+
+.stats-icon {
+  font-size: 2.5rem;
+  opacity: 0.8;
+  margin-bottom: 15px;
+}
+
+.stats-number {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.stats-label {
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+/* ===================== */
+/* 10. Cartões de Relatórios */
+/* ===================== */
+.report-card {
+  text-decoration: none;
+  color: inherit;
+  height: 100%;
+  display: block;
+  transition: transform 0.3s;
+}
+
+.report-card:hover {
+  transform: translateY(-5px);
+}
+
+.report-card-body {
+  background: white;
+  border-radius: 12px;
+  padding: 25px;
+  height: 100%;
+  box-shadow: var(--card-shadow);
+  transition: all 0.3s;
+}
+
+.report-card:hover .report-card-body {
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.report-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.report-card h3 {
+  color: var(--primary-color);
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.report-card p {
+  color: var(--secondary-color);
+  margin-bottom: 0;
+}
+
+/* ===================== */
+/* 11. Animações         */
+/* ===================== */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+.delay-1 { animation-delay: 0.1s; }
+.delay-2 { animation-delay: 0.2s; }
+.delay-3 { animation-delay: 0.3s; }
+.delay-4 { animation-delay: 0.4s; }
+.delay-5 { animation-delay: 0.5s; }
+
+/* ===================== */
+/* 12. Responsividade    */
+/* ===================== */
+@media (max-width: 768px) {
+  .navbar-brand {
+    font-size: 1.3rem;
+  }
+
+  .welcome-section,
+  .feature-card,
+  .report-card-body {
+    padding: 20px;
+  }
+
+  .report-icon {
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+  }
+
+  .table-responsive {
+    overflow-x: auto;
+  }
+}

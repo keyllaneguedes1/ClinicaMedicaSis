@@ -1,0 +1,14 @@
+<!-- templates/consultas/confirmar_delete_pagamento.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="alert alert-warning">{{ mensagem }}</div>
+
+  <p>Consulta: {{ consulta.id }} - {{ consulta.data_consulta }}</p>
+
+  <form method="POST">
+    <input type="hidden" name="forcar" value="1">
+    <button type="submit" class="btn btn-danger">Excluir mesmo assim</button>
+    <a href="{{ url_for('consulta.listar_consultas') }}" class="btn btn-secondary">Cancelar</a>
+  </form>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Consultas por Médico{% endblock %}
+
+{% block content %}
+<div class="card shadow p-4">
+  <h4 class="mb-3 text-primary">📅 Resultado do Relatório: Consultas por Médico</h4>
+
+  {% if dados %}
+    <table class="table table-striped table-bordered">
+      <thead>
+        <tr>
+          <th>Paciente</th>
+          <th>Data</th>
+          <th>Observações</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for consulta in dados %}
+        <tr>
+          <td>{{ consulta.nome_paciente }}</td>
+          <td>{{ consulta.data_consulta }}</td>
+          <td>{{ consulta.observacoes }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <div class="alert alert-info">Nenhuma consulta encontrada nesse período.</div>
+  {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block title %}Lista de Exames{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="mb-4">Exames</h2>
+
+    <a href="{{ url_for('exame.novo_exame') }}" class="btn btn-primary mb-3">Novo Exame</a>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="alert alert-{{ category }}">{{ message }}</div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>ID Consulta</th>
+                <th>Tipo</th>
+                <th>Resultado</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for exame in exames %}
+            <tr>
+                <td>{{ exame.id }}</td>
+                <td>{{ exame.id_consulta }}</td>
+                <td>{{ exame.tipo_exame }}</td>
+                <td>{{ exame.resultado }}</td>
+                <td>
+                    <a href="{{ url_for('exame.editar_exame', id=exame.id) }}" class="btn btn-sm btn-warning">Editar</a>
+                    <form action="{{ url_for('exame.deletar_exame', id=exame.id) }}" method="post" style="display:inline;">
+                        <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Tem certeza que deseja excluir este exame?')">Excluir</button>
+                    </form>
+                </td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="5" class="text-center">Nenhum exame encontrado.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

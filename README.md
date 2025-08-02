@@ -19,6 +19,8 @@ Sistema web desenvolvido para gerenciar uma clínica médica, permitindo o contr
   - Médicos
   - Consultas
   - Pagamentos
+  - Exames
+  - Receitas
 - Relacionamento entre tabelas com uso de JOINs
 - Geração de logs automáticos com triggers no banco de dados
 - Visualização de relatórios e histórico de ações
